@@ -3,6 +3,8 @@ package event_system
 import "core:log"
 import "core:intrinsics"
 
+/* DATA TYPES */
+
 Event :: struct( $Input_Type: typeid )
     where intrinsics.type_is_enum(Input_Type)
 {
@@ -11,8 +13,13 @@ Event :: struct( $Input_Type: typeid )
     p_data              : rawptr,
 }
 
-get_event_data :: proc( p_event: ^Event( $Input_Type ), $Data_Type: typeid ) -> ^Data_Type
-    where intrinsics.type_is_enum(Input_Type)
+/* PROCEDURES */
+
+get_event_data :: proc(
+    p_event     : ^Event( $Input_Type ),
+    $Data_Type  : typeid,
+) -> ^Data_Type
+where intrinsics.type_is_enum(Input_Type)
 {
     if( nil == p_event.p_data ) {
         log.warn( p_event.input, "event does not conatin any data" )

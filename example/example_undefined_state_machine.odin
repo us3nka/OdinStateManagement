@@ -1,8 +1,10 @@
 package example
 
 import "core:fmt"
-import "../state_management/event_system"
-import "../state_management/undefined_state_machine"
+
+import "state_management:event_system"
+import "state_management:undefined_state_machine"
+
 
 Some_Undefined_Input :: enum {
     INPUT_1,
@@ -16,14 +18,15 @@ Some_Undefined_State :: enum {
     STATE_3,
 }
 
-undefined_state_machine: undefined_state_machine.Undefined_State_Machine( Some_Undefined_State, Some_Undefined_Input ) = {
+undefined_state_machine: undefined_state_machine.Undefined_State_Machine( Some_Undefined_State, Some_Undefined_Input, event_system.NO_DATA ) = {
     "Some Undefined State Machine",
     {
         { some_undefined_state_entry_action, some_undefined_state_exit_action, some_undefined_state_input_action },
         { some_undefined_state_entry_action, some_undefined_state_exit_action, some_undefined_state_input_action },
         { some_undefined_state_entry_action, some_undefined_state_exit_action, some_undefined_state_input_action },
     },
-    .STATE_1
+    .STATE_1,
+    nil
 }
 
 some_undefined_state_entry_action :: proc( p_event: ^event_system.Event( Some_Undefined_Input ) )
