@@ -205,4 +205,3 @@ check_conditional_events :: proc(
         }
     }
 }
-

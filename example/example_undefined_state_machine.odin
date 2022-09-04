@@ -1,8 +1,10 @@
 package example
 
 import "core:fmt"
+
 import "state_management:event_system"
 import "state_management:undefined_state_machine"
+
 
 Some_Undefined_Input :: enum {
     INPUT_1,
