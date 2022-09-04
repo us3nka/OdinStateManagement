@@ -6,6 +6,7 @@ import "core:intrinsics"
 import "../event_system"
 
 /* DATA TYPES */
+
 State_Action :: union( $Input_Type: typeid, $State_Machine_Data_Type: typeid ) {
     proc( p_event: ^event_system.Event( Input_Type ), p_state_machine_data: ^State_Machine_Data_Type ),
     proc( event: ^event_system.Event( Input_Type ) )
@@ -65,8 +66,7 @@ state_transition_raw_data :: proc(
     p_state_machine : ^Finite_State_Machine( $State_Type, $Input_Type, $State_Machine_Data_Type ),
     input           : Input_Type,
     p_data          : $Data_Type,
-)
-    where intrinsics.type_is_enum(State_Type), intrinsics.type_is_enum(Input_Type), intrinsics.type_is_pointer(Data_Type)
+) where intrinsics.type_is_enum(State_Type), intrinsics.type_is_enum(Input_Type), intrinsics.type_is_pointer(Data_Type)
 {
     event: event_system.Event( Input_Type ) = {
         input,
@@ -118,6 +118,7 @@ state_transition_event :: proc(
         p_state_machine.current_state = p_state_machine.transition_table[p_state_machine.current_state][input]
 
         log.debug( p_state_machine.name, ":", p_state_machine.current_state, "<-", input, ": ENTRY" )
+
         call_state_procedure( p_state_machine.state_table[p_state_machine.current_state].entry_procedure, p_event, &p_state_machine.data )
     }
 }

@@ -139,6 +139,7 @@ state_transition_event :: proc(
         p_state_machine.current_state = new_state
 
         log.debug( p_state_machine.name, ":", p_state_machine.current_state, "<-", p_event.input, ": ENTRY" )
+
         call_trasition_procedure( p_state_machine.state_table[p_state_machine.current_state].entry_procedure, p_event, &p_state_machine.data )
     }
 }

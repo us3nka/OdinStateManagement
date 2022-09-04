@@ -4,7 +4,6 @@ import "core:fmt"
 import "state_management:event_system"
 import "state_management:finite_state_machine"
 
-
 Music_Box_Input :: enum {
     START_BUTTON_PRESSED,
     STOP_BUTTON_PRESSED,
