@@ -16,6 +16,7 @@ Current features:
     
 TODO:
 - Event system:
+  - Make thread save 
   - Publish/Post events
     - Currently events are always send to all the registered state machines accepting the input
     - Add possibility to address specific state machine
